@@ -1,5 +1,6 @@
 const express = require('express');
 const fetch = require('node-fetch');
+require('dotenv').config();
 const app = express();
 
 // 允许所有来源
@@ -17,7 +18,7 @@ app.get('/api/tiingo/:symbol', async (req, res) => {
   // 手动构造日期（YYYY-MM-DD 格式）
   const endDate = new Date('2025-05-16'); // 当前日期
   const startDate = new Date(endDate);
-  startDate.setMonth(startDate.getMonth() - 5); // 粗略估计 152 个交易日
+  startDate.setMonth(startDate.getMonth() - 8); // 调整为 8 个月前，确保足够交易日
   
   const pad = (num) => String(num).padStart(2, '0');
   const startDateStr = `${startDate.getFullYear()}-${pad(startDate.getMonth() + 1)}-${pad(startDate.getDate())}`;
