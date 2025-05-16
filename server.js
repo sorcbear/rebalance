@@ -16,9 +16,9 @@ app.get('/api/tiingo/:symbol', async (req, res) => {
   const apiKey = process.env.TIINGO_API_KEY || '6f0a09083c75be7a575ba5c55ff97e0bca32a6b0';
   
   // 手动构造日期（YYYY-MM-DD 格式）
-  const endDate = new Date('2025-05-16'); // 当前日期
+  const endDate = new Date('2025-05-16');
   const startDate = new Date(endDate);
-  startDate.setMonth(startDate.getMonth() - 8); // 调整为 8 个月前，确保足够交易日
+  startDate.setMonth(startDate.getMonth() - 8);
   
   const pad = (num) => String(num).padStart(2, '0');
   const startDateStr = `${startDate.getFullYear()}-${pad(startDate.getMonth() + 1)}-${pad(startDate.getDate())}`;
